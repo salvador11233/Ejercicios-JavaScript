@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1" />
+  <title>Ejercicio 2</title>
+  <script type="text/javascript">
+//Funcion para ver dias transcurrido
+  function numeroDiasTranscurridos(cadena){
+     //Se convierte cadena en fecha
+     var fecha = new Date(cadena);
+     //se comprueba si no es un nuero
+     if (isNaN(fecha)){
+        return false;}
+     else{
+        var diferencia = new Date() - fecha;
+        //Un día tiene 86400000 milisegundos
+        return parseInt(diferencia / 86400000);
+     }
+     
+  } 
+
+  alert("Num. de días transcurridos: " + (numeroDiasTranscurridos(prompt("Introduzca una fecha:"))));      
+  </script>
+
+</head>
+
+<body>
+</body>
+</html>

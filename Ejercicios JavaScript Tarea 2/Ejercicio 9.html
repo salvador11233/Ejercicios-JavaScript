@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio 9</title>
+<!--Se integra el javascript-->
+ <script type="text/javascript">
+ /******** Ejercicio 9 ********/
+ //Funcion que es encargada de ver si es minunscula, mayuscula o ambas 
+ function minMayAmb(cadena){
+ //Son mayusculas
+ 	if(cadena==cadena.toUpperCase()){
+ 		return 'son mayúsculas';
+ 	} else if(cadena==cadena.toLowerCase()) { //Son minusculas
+ 		return 'son minúsculas';
+ 	}  else { //Son mayusculas y minusculas
+    	return 'son mayúsculas y minúsculas';
+	}
+}
+//Funcion que se encarga de solicitar la frase o palabra
+function pedirFrase(){
+	//Se solicita la frase
+	var cadena = prompt ("Introduce una palabra o frase");
+	//Se pasa valor a la funcion
+	var valor = minMayAmb(cadena);
+	//Se imprime el resultado
+	alert('Las letras de la cadena '+valor);
+    
+}
+ </script>
+</head>
+ <!--Se carga la funcion al iniciar la pagina -->
+<body onload="pedirFrase();">
+<p>Esta página contiene el primer script</p>
+</body>
+</html>

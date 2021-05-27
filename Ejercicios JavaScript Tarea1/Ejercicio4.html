@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1" />
+  <title>Ejercicio 4</title>
+  <script type="text/javascript">
+  //función que recibe el DNI
+  function esDNICorrecto(dni){
+  	//Arreglo con las letras
+     var caracteres = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B',
+	 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+	 
+	 //Salir si está vacío
+	 if(dni == null){
+	    return "No se cumple con la DNI";
+	 }
+	 //Se declara variables
+     var letra = dni.charAt(dni.length-1);
+	 letra=letra.toUpperCase();
+     var numero = dni.substring(0,dni.length-1);
+	 
+	 //Comprobar que el último carácter es una letra
+	 //y que el número está entre 1 y 99999999
+	 if(caracteres.join("").lastIndexOf(letra) < 0){
+	    return "No se cumple con la DNI";
+	} else if(isNaN(numero) || numero < 1 || numero > 99999999){
+	    return "No se cumple con la DNI";
+	} else {
+	    var resto = numero % 23;
+		if(caracteres[resto] != letra){
+		   return "No se cumple con la DNI";
+		}
+		else{
+		   return "Felicidades! Si es un DNI valida!";}
+	 }	   
+   }
+   //Se solita la DNI
+   var dni = prompt("Introduce un DNI:");  
+   //Se llama función
+   document.write(esDNICorrecto(dni));
+  
+  </script>
+ 
+</head>
+
+<body>
+</body>
+</html>

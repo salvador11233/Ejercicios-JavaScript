@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio 11</title>
+<!--Se integra el javascript-->
+<script type="text/javascript">
+  /******** Ejercicio 11 ********/
+  //Variable global
+  var valor;
+  //Clase tipo Persona que es el padre
+  class Persona {
+    //Se declara el constructor
+    constructor(nombre, edad, genero){
+      this.nombre = nombre;
+      this.edad = edad;
+      this.genero = genero;
+    }
+    //Mensaje que se mostrara
+    detalles(){
+      return "El nombre de la persona es " + this.nombre 
+      + "\nLa edad es de " + this.edad
+      + "\nEl genero es " + this.genero;
+    }
+  }
+  //Clase tipo Estudiante que es el hija y hereda de la clase persona
+  class Estudiante extends Persona {
+    //Se declara el constructor
+    constructor(nombre, edad, genero, curso, grupo){
+      super(nombre, edad, genero);
+      this.curso = curso;
+      this.grupo = grupo;
+    } 
+  }
+  //Clase tipo Profesor que es el hija y hereda de la clase persona
+  class Profesor extends Persona {
+    //Se declara el constructor
+    constructor(nombre, edad, genero, asignatura, nivel){
+      super(nombre, edad, genero);
+      this.asignatura = asignatura;
+      this.nivel = nivel;
+    }
+  }
+
+  //Funcion que se encarga de solicitar los datos del alumno
+  function registrar(){
+  //Se solicita los datos
+  var nombre = prompt ("Introduce un nombre");
+  var edad = prompt ("Introduce una edad");
+  var genero = prompt ("Introduce un genero");
+  var curso = prompt ("Introduce un curso");
+  var grupo = prompt ("Introduce un grupo");
+  //Se pasa los valores al objeto
+  valor = new Estudiante(nombre, edad, genero, curso, grupo);
+  }
+
+  //Funcion que se encarga de solicitar la frase o palabra
+  function asignar(){
+  //Se solicita los datos
+  var nombre = prompt ("Introduce un nombre");
+  var edad = prompt ("Introduce una edad");
+  var genero = prompt ("Introduce un genero");
+  var asignatura = prompt ("Introduce una asignatura");
+  var nivel = prompt ("Introduce un nivel ");
+  //Se pasa los valores al objeto
+  valor = new Profesor(nombre, edad, genero, asignatura, nivel);
+  }
+
+  //Funcion que se encarga de imprimir el resultado
+  function obtDetalles(){
+  //Se muestra el mensaje
+  alert(valor.detalles());
+  }
+ </script>
+</head>
+ <!--Se agregan botones donde con un onclick se llama la función -->
+<body>
+<p>Boton de registro de estudiante</p>
+<button onclick="registrar();">Registrar estudiante</button>
+<p>Boton de asignar a maestro</p>
+<button onclick="asignar();">Asignar a maestro</button>
+<p>Detalles de persona</p>
+<button onclick="obtDetalles();">Detalles de persona</button>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1" />
+  <title>Ejercicio 3</title>
+  <script type="text/javascript">
+  // funcion para polidromo
+  function esPalindromo(frase){   
+     //Para el palíndromo...
+     //Se convierte la frase a minúsculas....
+     frase = frase.toLowerCase();
+     //Quitamos los espacios en blanco...
+     //Esto funcionaría en FireFox, pero no en Chrome ni en IE
+     //frase = frase.replace(" ", "", "g");
+     while(frase.indexOf(" ") >= 0){
+        frase = frase.replace(" ","");
+     }
+
+     //Damos la vuelta a la frase
+     var reves= "";
+     for(var i=0; i <frase.length; i++)
+         reves = frase.charAt(i) + reves;
+
+    return(frase==reves);
+   }
+   //Se declara variables
+    var frase = prompt("Introduce una frase:");  
+    var palabras = frase.split(" "); 
+    //Se coloca el resultado
+     document.write("<strong>Frase: " + frase + "</strong><br>");
+     document.write("Número de palabras: " + palabras.length + "<br>");
+     document.write("Primera palabra:" + palabras[0] + "<br>");
+     document.write("Ultima palabra:" + palabras[palabras.length - 1] + "<br>");
+     //variable auxiliar
+     var palabrasAuxiliar = palabras.slice(0,palabras.length);
+     palabrasAuxiliar.reverse();
+     for (var i=0; i < palabrasAuxiliar.length; i++)
+          document.write(palabrasAuxiliar[i] + " ");
+     document.write("<br>");
+     //Se recorre arreglo
+     palabrasAuxiliar.sort();
+     for (var i=0; i < palabrasAuxiliar.length; i++) 
+         document.write(palabrasAuxiliar[i] + " ");
+     document.write("<br>");
+     
+     palabrasAuxiliar.reverse();
+     for (var i=0; i < palabrasAuxiliar.length; i++)
+          document.write(palabrasAuxiliar[i] + " ");
+     document.write("<br>");
+     //se menciona si es polidromo o no
+     if (esPalindromo(frase))
+        document.write("Es un palíndromo...");
+     else
+        document.write("No es un palíndromo...");
+  </script>
+ 
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio 13</title>
+<!--Se integra el javascript-->
+<script type="text/javascript">
+  /******** Ejercicio 13 ********/
+  //Funcion donde comprueba si tiene una fecha
+  function EjercicioA(cadena){
+    //Varaibles
+    var frase = cadena.split(" ");
+    var fecha;
+    var mensaje;
+    //bucle for
+    for (var i = 0; i < frase.length; i++) {
+      //Comienza a validar la fecha
+      fecha = new Date(frase[i]);
+      // Se comprueba la fecha si no contiene numero
+      if (isNaN(fecha)){
+        mensaje = 'No Valido';
+      } else {
+        mensaje = 'Valido';
+        break;
+      }
+    }
+    //Mensaje
+    alert(mensaje);
+  }   
+  //Función de correo deonde se valida
+  function EjercicioB(correo){
+    //Se le da el formato de vliadación
+    re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,3})$/
+    //Se comprueba
+    if(!re.exec(correo)){
+      alert('Email no valido');
+    } else {
+      alert('Tu email ' + correo + ' es valido');
+    }
+  }  
+  //funcion donde se remplaza cierta letra por otra cosa
+  function escapeHTML(text) {
+    //Arreglo de sustitución
+    var replacements = [["a", "@"], ["b", "7"],
+                        ["c", "3"], ["d", "|"]];
+    //Forech doonde recore objeto remplazando
+    replacements.forEach(function(replace) {
+      text = text.replace(replace[0], replace[1]);
+    });
+    //retorno
+    return text;
+  }
+  //Función donde se invierte el nombre
+  function EjercicioD(nombre){
+    //Se crea las variables
+    var divNombre = nombre.split(" ");
+    var mensaje = '';
+    //Se recore un for invertido
+    for (var i = divNombre.length - 1; i >= 0; i--) {       
+        mensaje += divNombre[i] + ', ';
+    }
+    //Retorna mensaje
+    return mensaje;
+  } 
+ </script>
+</head>
+ <!--Se agregan botones donde con un onclick se llama la función -->
+<body>
+<p>Boton para ejecutar ejercicio A</p>
+<button onclick="EjercicioA(prompt('Introduzca una cadena con fecha:'));">Ejercicio A</button>
+<p>Boton para ejecutar ejercicio B</p>
+<button onclick="EjercicioB(prompt('Introduzca un correo:'));">Ejercicio B</button>
+<p>Boton para ejecutar ejercicio C</p>
+<button onclick="alert(escapeHTML(prompt('Introduzca una cadena:')));">Ejercicio C</button>
+<p>Boton para ejecutar ejercicio D</p>
+<button onclick="alert(EjercicioD(prompt('Introduzca un nombre:')));">Ejercicio D</button>
+</body>
+</html>

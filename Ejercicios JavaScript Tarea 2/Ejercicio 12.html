@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio 12</title>
+<!--Se integra el javascript-->
+<script type="text/javascript">
+  /******** Ejercicio 12 ********/
+  //Variables globales
+  var sumaDados = [];
+  var dado1;
+  var dado2;
+
+  //Funcion que se de tirar lo dados
+  function tirarDados(){
+    for (var i = 0; i < 36; i++) {
+      //Random que realiza numeros al azar
+      dado1 = Math.floor(Math.random() * 7) + 1;
+      dado2 = Math.floor(Math.random() * 7) + 1;
+      sumaDados[i] = dado1 + dado2;
+    }
+  }
+  //Función que muestra el resultad
+  function verResultado(){
+    var mensaje = '';
+    //for con las sumas realizadas
+    for (var i = 0; i < sumaDados.length; i++) {
+      mensaje += 'La suma de los dados fueron\n' + sumaDados[i] + '\n';
+    }
+
+    var repetidos = {};
+    //foreah para recorer objeto y comprobar cuantas veces se repite numero
+    sumaDados.forEach(function(numero){
+      repetidos[numero] = (repetidos[numero] || 0) + 1;
+    });
+
+    //Se muestra mensaje en consola
+    console.log(mensaje);
+
+    console.log(repetidos);
+
+  }
+
+ </script>
+</head>
+ <!--Se agregan botones donde con un onclick se llama la función -->
+<body>
+<b>NOTA: El resultado se muestra en la consola</b>
+<p>Boton para tirar los dados</p>
+<button onclick="tirarDados();">Tirar dados</button>
+<p>Boton que mostrara cuantas repeticiones tuvo</p>
+<button onclick="verResultado();">Repeticiones</button>
+</body>
+</html>

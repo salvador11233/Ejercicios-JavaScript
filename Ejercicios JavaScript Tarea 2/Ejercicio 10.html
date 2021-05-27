@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio 10</title>
+<!--Se integra el javascript-->
+<script type="text/javascript">
+  /******** Ejercicio 10 ********/
+  //Funcion que es encargada de ver si es polinomio 
+  function palindromo(cadena){
+  //Convierte en minusculas
+  cadena = cadena.toLowerCase();
+  //Convierte en un array
+  var letrasEspacios = cadena.split("");
+  //Se eliminan espacios en blanco
+  var cadenaSinEspacios = "";
+  //Se realiza un for con los objetos para ver si tiene espacios en blanco
+  for (i in letrasEspacios){
+    if(letrasEspacios[i] != " "){
+      cadenaSinEspacios += letrasEspacios[i];
+    }
+  }
+  //Se declaran variables auxiliares
+  var letras = cadenaSinEspacios.split("");
+  var letrasReves = cadenaSinEspacios.split("").reverse();
+  var igual = true;
+  //se realiza for con el objeto de letras y se compara
+  for(i in letras){
+    if (letras[i] != letrasReves[i]){
+      igual = false;
+      break;
+    } else { 
+      igual = true;
+    }      
+  }
+  //Se compara con el booleano que se regreso
+  if(igual){
+    return 'ES palindromo';    
+  } else { 
+    return 'NO es palindromo';
+  }
+}
+//Funcion que se encarga de solicitar la frase o palabra
+function pedirFrase(){
+  //Se solicita la frase
+  var cadena = prompt ("Introduce una palabra o frase");
+  //Se pasa valor a la funcion
+  var valor = palindromo(cadena);
+  //Se imprime el resultado
+  alert('La cadena '+valor);
+    
+}
+ </script>
+</head>
+ <!--Se carga la funcion al iniciar la pagina -->
+<body onload="pedirFrase();">
+<p>Esta página contiene el primer script</p>
+</body>
+</html>

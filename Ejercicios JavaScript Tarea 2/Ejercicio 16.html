@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio 16</title>
+<!--Se integra el javascript-->
+<script type="text/javascript">
+  /******** Ejercicio 16 ********/
+
+  function anade(){
+  // Introduce una palabra o pulse cancelar.  
+  do{
+    var palabras = prompt('Introduce el texto que quieras.');
+  }while (palabras == "")                   
+  // Si ha pulado cancelar no ejecutará el siguiente código 
+  if (palabras != null){
+    var elemento = document.createElement('li');
+    var texto = document.createTextNode(palabras);
+    var lista = document.getElementById('lista');    
+    // con esto creamos el nodo li y el texto.
+    elemento.appendChild(texto); 
+    lista.appendChild(elemento);    
+  }      
+} 
+
+function eliminar(){
+  var lista = document.getElementById('lista');
+  var elemento = lista.lastChild;  
+   
+  // también existen las funciones childNodes, firstChild = childNodes[0]
+  // y lastChild = childNodes[this.childNodes.length-1]   
+   
+  if(elemento.id != 'ultimo'){
+    elemento.parentNode.removeChild(elemento);
+  } else {
+    alert('No se pueden eliminar más elementos');
+  } 
+}
+
+</script>
+</head>
+<body>
+ <ul id="lista">
+        <li id="ultimo">Lorem ipsum dolor sit amet</li>
+        <li>Consectetuer adipiscing elit</li>
+        <li>Sed mattis enim vitae orci</li>
+        <li>Phasellus libero</li>
+        <li>Maecenas nisl arcu</li>
+    </ul>
+<!--Se agregan botones donde con un onclick se llama la función -->
+<p>Boton para añadir elemento</p>
+<input type="button" value="Añadir elemento" onclick="anade();">
+<p>Boton para eliminar elemento</p>
+<input type="button" value="Eliminar elemento" onclick="eliminar();">
+</body>
+</html>

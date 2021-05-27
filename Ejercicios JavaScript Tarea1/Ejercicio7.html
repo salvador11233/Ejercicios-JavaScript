@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xml:lang="es" lang="es">
+<head>
+  <meta charset="ISO-8859-1" />
+  <title>Ejercicio 7</title>
+  <script type="text/javascript">
+  //Se declara arreglo con los campos
+  var campos = ["Apellidos","Nombre","E-Mail","Contraseña"]
+  //Funcion donde se verifica los campos 
+  function añadirCampos(campos){
+     //Se obtien el Id del formulario  
+     var formulario = document.getElementById("form1");
+     //Id del boton
+	 var enviar = document.getElementById("enviar");
+     //Se crea los campos desde javascrpit
+	 for(var i = 0; i < campos.length; i++){
+	    var etiqueta = campos[i];
+        var campo = document.createElement("p");
+        campo.appendChild(document.createTextNode(etiqueta + ":"));
+	    var textBox = document.createElement("input");
+	    textBox.id = etiqueta;
+	    campo.appendChild(textBox);
+        enviar.parentNode.insertBefore(campo,enviar);
+    }		
+   }	 
+  </script>
+</head>
+<!--Cuerpo del html-->
+<body onload="añadirCampos(campos)">
+    <form action="#" method="get" id="form1">
+        <div>
+            <input id="enviar" type="submit" value="Enviar datos" />
+        </div>
+    </form>
+</body>
+</html>

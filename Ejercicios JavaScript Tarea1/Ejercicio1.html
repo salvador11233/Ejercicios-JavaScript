@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 1</title>
+	<meta charset="ISO-8859-1" />
+<script type="text/javascript">
+	//Función que se ejecuta al iniciar pagina
+	function fecha(){
+		//Se saca la hor del equipo
+		var fecha = new Date();
+		//Se da a variables cada sentencia
+		horas = fecha.getHours();
+		minutos = fecha.getMinutes();
+		segundos = fecha.getSeconds();
+		semana = fecha.getDay();
+		dia = fecha.getDate();
+		mes = fecha.getMonth();
+		year = fecha.getFullYear();
+		
+		//Se crea un arreglo de semana
+		var diaSemana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+		//Se crea un arreglo del año
+		var mesYear = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+		//Se pasa los valores a las etiquetas
+		document.getElementById('semana').textContent = diaSemana[semana];
+		document.getElementById('dia').textContent = dia;
+		document.getElementById('mes').textContent = mesYear[mes];
+		document.getElementById('year').textContent = year;
+		document.getElementById('hora').textContent = horas;
+		document.getElementById('minutos').textContent = minutos;
+	};
+</script>
+</head>
+<body onload="fecha();" >
+<!--Etiqutas donde se coloca el resultado-->	
+Hoy es <span id="semana"></span>, <span id="dia"></span> de <span id="mes"></span> de <span id="year"></span>
+<br>
+Son las <span id="hora"></span>:<span id="minutos"></span>
+</body>
+</html>

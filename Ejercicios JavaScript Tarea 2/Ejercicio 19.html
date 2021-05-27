@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio 19</title>
+<!--Se integra el javascript-->
+<script type="text/javascript">
+/******** Ejercicio 19 ********/
+//fincion para calcular evento
+function dondeHasPinchado(elEvento){
+  var evento = elEvento || window.event;
+  var coordenadaX = evento.clientX;
+  var coordenadaY = evento.clientY;
+  var dimension = tamanoVentana();
+  
+  var tamanoX = dimension[0];
+  var tamanoY = dimension[1];
+  
+  var posicionHorizontal = "";
+  var posicionVertical = "";
+  
+  if(coordenadaX > tamanoX/2){
+    posicionHorizontal = "derecha";
+  }
+  else{
+    posicionHorizontal = "izquierda";
+  }
+  
+  if (coordenadaY > tamanoY/2){
+    posicionVertical = "inferior";
+  }
+  else{
+    posicionVertical = "superior";
+  }
+  
+  muestraInformacion2(['POSICION:', posicionHorizontal , posicionVertical]);
+
+}
+
+function tamanoVentana(){
+  var dimensiones = [];
+  
+  if(typeof(window.innerWidth )== 'number'){
+    // No es IE
+    dimensiones = [window.innerWidth , window.innerHeight];
+  }
+  else if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)){
+    // IE6 en modo estandar
+    dimensions = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+  }
+  else if(document.body && (document.body.clientWidth || document.body.clientHeight)){
+    // IE en modo quirks
+    dimensions = [document.body.clientWidth, document.body.clientHeight];
+  }
+  return dimensiones;
+}
+
+function muestraInformacion2(mensaje) {
+  document.getElementById("posicionMouse").innerHTML = '<h2>'+mensaje[0]+'</h2>';
+  for(var i=1; i<mensaje.length; i++) {
+    document.getElementById("posicionMouse").innerHTML += '<p>'+mensaje[i]+'</p>';
+  }
+}
+
+document.onclick = dondeHasPinchado;
+
+</script>
+<!--Codigo CSS que permite mostrar las cajas-->
+<style type="text/css">
+  body {font-family: arial, helvetica;}
+  .box {width:160px; height: 160px; border:thin solid silver; padding:.5em; float: left; margin-right: 15px;}
+  .box h1 {margin: 0;}  
+</style>
+</head>
+<body>
+<!--Cajas donde se muestra el resultado-->
+<p> Clic izquierdo para detectar evento</p>
+<div id="posicionMouse" class="box">
+  <h1>Posición</h1>
+  <span class="posicion"></span>
+</div>
+</body>
+</html>
